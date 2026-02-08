@@ -718,13 +718,6 @@
       stroke-linejoin: round;
     }
 
-    @media (max-width: 480px) {
-      .form-row {
-        grid-template-columns: 1fr;
-        gap: 0;
-      }
-    }
-
     /* ===== FOOTER ===== */
     footer {
       text-align: center;
@@ -793,6 +786,8 @@
     }
 
     /* ===== RESPONSIVE ===== */
+
+    /* Tablet: 768px 이하 */
     @media (max-width: 768px) {
       html {
         font-size: 16px;
@@ -855,6 +850,10 @@
         padding: 5rem 1.5rem;
       }
 
+      .hero-content {
+        max-width: 100%;
+      }
+
       .profile-photo {
         width: 110px;
         height: 110px;
@@ -863,11 +862,6 @@
       .profile-photo-inner {
         width: 102px;
         height: 102px;
-      }
-
-      .profile-photo-inner svg {
-        width: 44px;
-        height: 44px;
       }
 
       .hobby-grid {
@@ -896,14 +890,19 @@
       .hero-cta .btn-primary,
       .hero-cta .btn-outline {
         width: 100%;
-        max-width: 260px;
+        max-width: 280px;
         justify-content: center;
       }
     }
 
-    @media (max-width: 480px) {
+    /* Mobile: 400px 이하 */
+    @media (max-width: 400px) {
       html {
-        font-size: 15px;
+        font-size: 14px;
+      }
+
+      nav {
+        padding: 0.8rem 1rem;
       }
 
       .nav-logo {
@@ -911,7 +910,7 @@
       }
 
       .hero {
-        padding: 4rem 1rem;
+        padding: 4rem 0.8rem;
         min-height: auto;
       }
 
@@ -921,7 +920,7 @@
       }
 
       .hero-tagline {
-        font-size: 1.05rem;
+        font-size: 1rem;
       }
 
       .profile-photo {
@@ -935,22 +934,22 @@
         height: 82px;
       }
 
-      .profile-photo-inner svg {
-        width: 36px;
-        height: 36px;
+      section {
+        padding: 2rem 0.6rem;
       }
 
       .section-inner {
-        padding: 2rem 1.2rem;
+        padding: 1.8rem 1rem;
         border-radius: 14px;
       }
 
       .about-tags {
-        gap: 0.5rem;
+        gap: 0.4rem;
       }
 
       .about-tag {
-        font-size: 0.78rem;
+        font-size: 0.75rem;
+        padding: 0.3rem 0.7rem;
       }
 
       .hobby-icon {
@@ -964,8 +963,24 @@
         height: 24px;
       }
 
-      .contact-email {
-        font-size: 1rem;
+      .hobby-card {
+        padding: 1.5rem 1rem;
+      }
+
+      .contact-section {
+        padding: 3rem 0.6rem;
+      }
+
+      .form-row {
+        grid-template-columns: 1fr;
+        gap: 0;
+      }
+
+      .hero-cta .btn-primary,
+      .hero-cta .btn-outline {
+        max-width: 100%;
+        padding: 0.85rem 1.5rem;
+        font-size: 0.88rem;
       }
     }
   </style>
