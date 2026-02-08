@@ -1,14 +1,19 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>김중기 — AI 컨설팅 크리에이터</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;700;900&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;700;900&family=Noto+Sans+KR:wght@300;400;500;700&display=swap"
+    rel="stylesheet">
   <style>
-    *, *::before, *::after {
+    *,
+    *::before,
+    *::after {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
@@ -175,15 +180,35 @@
     }
 
     @keyframes orbFloat1 {
-      0%, 100% { transform: translate(0, 0) scale(1); }
-      33% { transform: translate(-40px, 30px) scale(1.05); }
-      66% { transform: translate(20px, -20px) scale(0.97); }
+
+      0%,
+      100% {
+        transform: translate(0, 0) scale(1);
+      }
+
+      33% {
+        transform: translate(-40px, 30px) scale(1.05);
+      }
+
+      66% {
+        transform: translate(20px, -20px) scale(0.97);
+      }
     }
 
     @keyframes orbFloat2 {
-      0%, 100% { transform: translate(0, 0) scale(1); }
-      33% { transform: translate(30px, -25px) scale(1.03); }
-      66% { transform: translate(-25px, 15px) scale(0.96); }
+
+      0%,
+      100% {
+        transform: translate(0, 0) scale(1);
+      }
+
+      33% {
+        transform: translate(30px, -25px) scale(1.03);
+      }
+
+      66% {
+        transform: translate(-25px, 15px) scale(0.96);
+      }
     }
 
     .hero-content {
@@ -286,8 +311,15 @@
     }
 
     @keyframes shimmer {
-      0%, 100% { background-position: 0% center; }
-      50% { background-position: 200% center; }
+
+      0%,
+      100% {
+        background-position: 0% center;
+      }
+
+      50% {
+        background-position: 200% center;
+      }
     }
 
     .hero-tagline {
@@ -398,7 +430,9 @@
     }
 
     @keyframes fadeIn {
-      to { opacity: 1; }
+      to {
+        opacity: 1;
+      }
     }
 
     /* ===== SECTIONS ===== */
@@ -427,7 +461,8 @@
       margin: 0 auto;
     }
 
-    .divider::before, .divider::after {
+    .divider::before,
+    .divider::after {
       content: '';
       flex: 1;
       height: 1px;
@@ -592,46 +627,67 @@
       padding: 8rem 2rem;
     }
 
-    .contact-email-wrap {
+    .contact-form {
       margin-top: 2rem;
-      display: inline-flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 1.5rem;
+      text-align: left;
     }
 
-    .contact-email {
-      font-family: var(--serif);
-      font-size: clamp(1.1rem, 3vw, 1.6rem);
-      font-weight: 400;
+    .form-group {
+      margin-bottom: 1.2rem;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 500;
       color: var(--text);
-      letter-spacing: 0.01em;
-      position: relative;
-      padding-bottom: 4px;
+      margin-bottom: 0.4rem;
     }
 
-    .contact-email::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
+    .form-group input,
+    .form-group textarea {
       width: 100%;
-      height: 1px;
-      background: var(--accent);
-      transform: scaleX(0);
-      transform-origin: right;
-      transition: transform 0.4s var(--ease);
+      font-family: var(--sans);
+      font-size: 0.95rem;
+      color: var(--text);
+      background: var(--bg);
+      border: 1.5px solid var(--border);
+      border-radius: 12px;
+      padding: 0.8rem 1rem;
+      outline: none;
+      transition: border-color 0.3s var(--ease), box-shadow 0.3s var(--ease);
     }
 
-    .contact-email:hover::after {
-      transform: scaleX(1);
-      transform-origin: left;
+    .form-group input:focus,
+    .form-group textarea:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(108, 92, 231, 0.1);
+    }
+
+    .form-group input::placeholder,
+    .form-group textarea::placeholder {
+      color: var(--text-muted);
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 120px;
+      line-height: 1.6;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
     }
 
     .contact-btn {
       display: inline-flex;
       align-items: center;
+      justify-content: center;
       gap: 0.6rem;
+      width: 100%;
+      font-family: var(--sans);
       font-size: 0.95rem;
       font-weight: 500;
       color: #ffffff;
@@ -643,6 +699,7 @@
       letter-spacing: 0.03em;
       box-shadow: 0 4px 16px rgba(108, 92, 231, 0.3);
       transition: background 0.3s var(--ease), transform 0.3s var(--ease), box-shadow 0.3s var(--ease);
+      margin-top: 0.5rem;
     }
 
     .contact-btn:hover {
@@ -652,13 +709,20 @@
     }
 
     .contact-btn svg {
-      width: 16px;
-      height: 16px;
+      width: 18px;
+      height: 18px;
       stroke: currentColor;
       fill: none;
       stroke-width: 2;
       stroke-linecap: round;
       stroke-linejoin: round;
+    }
+
+    @media (max-width: 480px) {
+      .form-row {
+        grid-template-columns: 1fr;
+        gap: 0;
+      }
     }
 
     /* ===== FOOTER ===== */
@@ -683,9 +747,17 @@
       transform: translateY(0);
     }
 
-    .reveal-delay-1 { transition-delay: 0.1s; }
-    .reveal-delay-2 { transition-delay: 0.2s; }
-    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-1 {
+      transition-delay: 0.1s;
+    }
+
+    .reveal-delay-2 {
+      transition-delay: 0.2s;
+    }
+
+    .reveal-delay-3 {
+      transition-delay: 0.3s;
+    }
 
     /* ===== HAMBURGER MENU ===== */
     .nav-toggle {
@@ -898,6 +970,7 @@
     }
   </style>
 </head>
+
 <body>
 
   <!-- Navigation -->
@@ -937,17 +1010,17 @@
           컨텐츠 자동화 제작으로 새로운 가치를 만듭니다
         </p>
         <div class="hero-cta">
-          <a href="mailto:admin@metantec.ocom" class="btn-primary">
+          <a href="#contact" class="btn-primary">
             <svg viewBox="0 0 24 24">
-              <rect x="2" y="4" width="20" height="16" rx="2"/>
-              <path d="M22 4L12 13 2 4"/>
+              <rect x="2" y="4" width="20" height="16" rx="2" />
+              <path d="M22 4L12 13 2 4" />
             </svg>
             메일 보내기
           </a>
           <a href="#about" class="btn-outline">
             <svg viewBox="0 0 24 24">
-              <path d="M12 5v14"/>
-              <path d="M19 12l-7 7-7-7"/>
+              <path d="M12 5v14" />
+              <path d="M19 12l-7 7-7-7" />
             </svg>
             더 알아보기
           </a>
@@ -996,10 +1069,10 @@
           <div class="hobby-card reveal reveal-delay-1">
             <div class="hobby-icon">
               <svg viewBox="0 0 24 24">
-                <circle cx="5.5" cy="17.5" r="3.5"/>
-                <circle cx="18.5" cy="17.5" r="3.5"/>
-                <path d="M15 6a1 1 0 1 0 0-2 1 1 0 0 0 0 2z" fill="currentColor" stroke="none"/>
-                <path d="M12 17.5V14l-3-3 4-3 2 3h3"/>
+                <circle cx="5.5" cy="17.5" r="3.5" />
+                <circle cx="18.5" cy="17.5" r="3.5" />
+                <path d="M15 6a1 1 0 1 0 0-2 1 1 0 0 0 0 2z" fill="currentColor" stroke="none" />
+                <path d="M12 17.5V14l-3-3 4-3 2 3h3" />
               </svg>
             </div>
             <h3 class="hobby-name">싸이클</h3>
@@ -1008,8 +1081,8 @@
           <div class="hobby-card reveal reveal-delay-2">
             <div class="hobby-icon">
               <svg viewBox="0 0 24 24">
-                <path d="M4 20L8 10l4 5 4-8 4 13"/>
-                <path d="M4 20h16"/>
+                <path d="M4 20L8 10l4 5 4-8 4 13" />
+                <path d="M4 20h16" />
               </svg>
             </div>
             <h3 class="hobby-name">등산</h3>
@@ -1018,9 +1091,9 @@
           <div class="hobby-card reveal reveal-delay-3">
             <div class="hobby-icon">
               <svg viewBox="0 0 24 24">
-                <circle cx="12" cy="12" r="10"/>
-                <path d="M2 12h20"/>
-                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+                <circle cx="12" cy="12" r="10" />
+                <path d="M2 12h20" />
+                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
               </svg>
             </div>
             <h3 class="hobby-name">여행</h3>
@@ -1040,16 +1113,33 @@
         <p style="color: var(--text-secondary); font-weight: 300; margin-bottom: 0.5rem;">
           프로젝트 문의나 협업 제안을 환영합니다
         </p>
-        <div class="contact-email-wrap">
-          <a href="mailto:admin@metantec.ocom" class="contact-email">admin@metantec.ocom</a>
-          <a href="mailto:admin@metantec.ocom" class="contact-btn">
+        <form id="contactForm" class="contact-form">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="senderName">이름</label>
+              <input type="text" id="senderName" placeholder="홍길동" required>
+            </div>
+            <div class="form-group">
+              <label for="senderEmail">이메일</label>
+              <input type="email" id="senderEmail" placeholder="you@example.com" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="subject">제목</label>
+            <input type="text" id="subject" placeholder="문의 제목을 입력하세요" required>
+          </div>
+          <div class="form-group">
+            <label for="message">내용</label>
+            <textarea id="message" placeholder="문의 내용을 작성해주세요" required></textarea>
+          </div>
+          <button type="submit" class="contact-btn">
             <svg viewBox="0 0 24 24">
               <rect x="2" y="4" width="20" height="16" rx="2"/>
               <path d="M22 4L12 13 2 4"/>
             </svg>
             메일 보내기
-          </a>
-        </div>
+          </button>
+        </form>
       </div>
     </section>
   </main>
@@ -1101,6 +1191,20 @@
 
     overlay.addEventListener('click', closeMenu);
     links.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
+
+    // Contact form → mailto
+    document.getElementById('contactForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const name = document.getElementById('senderName').value.trim();
+      const email = document.getElementById('senderEmail').value.trim();
+      const subject = document.getElementById('subject').value.trim();
+      const message = document.getElementById('message').value.trim();
+
+      const body = `보낸 사람: ${name} (${email})\n\n${message}`;
+      const mailtoUrl = `mailto:admin@metantec.ocom?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      window.location.href = mailtoUrl;
+    });
   </script>
 </body>
+
 </html>
