@@ -718,6 +718,77 @@
       stroke-linejoin: round;
     }
 
+    /* ===== FORM SUCCESS MESSAGE ===== */
+    .form-success {
+      display: none;
+      text-align: center;
+      padding: 2rem 1rem;
+      animation: fadeUp 0.6s var(--ease-out) forwards;
+    }
+
+    .form-success.show {
+      display: block;
+    }
+
+    .form-success-icon {
+      width: 72px;
+      height: 72px;
+      margin: 0 auto 1.5rem;
+      background: var(--accent-glow);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .form-success-icon svg {
+      width: 36px;
+      height: 36px;
+      stroke: var(--accent);
+      fill: none;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .form-success h3 {
+      font-family: var(--serif);
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+      color: var(--text);
+    }
+
+    .form-success p {
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+      font-weight: 300;
+      line-height: 1.7;
+      margin-bottom: 0.5rem;
+    }
+
+    .form-success .btn-reset {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-top: 1.5rem;
+      font-family: var(--sans);
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--accent);
+      background: transparent;
+      border: 1.5px solid rgba(108, 92, 231, 0.35);
+      padding: 0.7rem 1.8rem;
+      border-radius: 100px;
+      cursor: pointer;
+      transition: background 0.3s var(--ease), border-color 0.3s var(--ease);
+    }
+
+    .form-success .btn-reset:hover {
+      background: var(--accent-glow);
+      border-color: var(--accent);
+    }
+
     /* ===== FOOTER ===== */
     footer {
       text-align: center;
@@ -1155,6 +1226,18 @@
             메일 보내기
           </button>
         </form>
+        <div id="formSuccess" class="form-success">
+          <div class="form-success-icon">
+            <svg viewBox="0 0 24 24">
+              <path d="M20 6L9 17l-5-5" />
+            </svg>
+          </div>
+          <h3>메일이 준비되었습니다</h3>
+          <p>이메일 앱이 열렸습니다.<br>내용을 확인하고 전송 버튼을 눌러주세요.</p>
+          <p style="font-size: 0.85rem; color: var(--text-muted);">이메일 앱이 열리지 않았다면 <strong>admin@metantec.com</strong>으로
+            직접 보내주세요.</p>
+          <button class="btn-reset" id="btnReset">다시 작성하기</button>
+        </div>
       </div>
     </section>
   </main>
@@ -1208,7 +1291,11 @@
     links.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
 
     // Contact form → mailto
-    document.getElementById('contactForm').addEventListener('submit', (e) => {
+    const contactForm = document.getElementById('contactForm');
+    const formSuccess = document.getElementById('formSuccess');
+    const btnReset = document.getElementById('btnReset');
+
+    contactForm.addEventListener('submit', (e) => {
       e.preventDefault();
       const name = document.getElementById('senderName').value.trim();
       const email = document.getElementById('senderEmail').value.trim();
@@ -1216,8 +1303,18 @@
       const message = document.getElementById('message').value.trim();
 
       const body = `보낸 사람: ${name} (${email})\n\n${message}`;
-      const mailtoUrl = `mailto:admin@metantec.ocom?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      const mailtoUrl = `mailto:admin@metantec.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
       window.location.href = mailtoUrl;
+
+      // Show success message
+      contactForm.style.display = 'none';
+      formSuccess.classList.add('show');
+    });
+
+    btnReset.addEventListener('click', () => {
+      formSuccess.classList.remove('show');
+      contactForm.style.display = 'block';
+      contactForm.reset();
     });
   </script>
 </body>
