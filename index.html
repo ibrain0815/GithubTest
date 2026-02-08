@@ -20,18 +20,28 @@
     }
 
     :root {
-      --bg: #f5f5f5;
-      --bg-surface: #e8e8ec;
-      --bg-card: #ffffff;
-      --border: #d5d5db;
-      --border-hover: #b8b8c0;
-      --text: #1a1a2e;
-      --text-secondary: #555568;
-      --text-muted: #8888a0;
-      --accent: #6c5ce7;
-      --accent-light: #a29bfe;
-      --accent-glow: rgba(108, 92, 231, 0.10);
-      --blue: #4a7ccc;
+      --bg: #0f172a;
+      /* Deep slate background */
+      --bg-surface: #1e293b;
+      /* Surface/Input background */
+      --bg-card: #1e293b;
+      /* Card background */
+      --border: #334155;
+      /* Subtle border */
+      --border-hover: #475569;
+      /* Hover borderish */
+      --text: #f8fafc;
+      /* Primary light text */
+      --text-secondary: #cbd5e1;
+      /* Secondary light text */
+      --text-muted: #94a3b8;
+      /* Muted text */
+      --accent: #818cf8;
+      /* Vibrant indigo accent */
+      --accent-light: #a5b4fc;
+      /* Lighter indigo */
+      --accent-glow: rgba(129, 140, 248, 0.12);
+      --blue: #38bdf8;
       --serif: 'Noto Serif KR', 'Georgia', serif;
       --sans: 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif;
       --ease: cubic-bezier(0.4, 0, 0.2, 1);
@@ -79,10 +89,11 @@
     }
 
     nav.scrolled {
-      background: rgba(245, 245, 245, 0.85);
+      background: rgba(15, 23, 42, 0.85);
+      /* Using var(--bg) with opacity */
       backdrop-filter: blur(20px);
       -webkit-backdrop-filter: blur(20px);
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
     }
 
     .nav-logo {
@@ -173,7 +184,7 @@
     .hero-bg .dot-grid {
       position: absolute;
       inset: 0;
-      background-image: radial-gradient(circle, rgba(108, 92, 231, 0.08) 1px, transparent 1px);
+      background-image: radial-gradient(circle, rgba(129, 140, 248, 0.15) 1px, transparent 1px);
       background-size: 40px 40px;
       mask-image: radial-gradient(ellipse 60% 50% at 50% 50%, black, transparent);
       -webkit-mask-image: radial-gradient(ellipse 60% 50% at 50% 50%, black, transparent);
@@ -447,7 +458,7 @@
       border-radius: 20px;
       padding: 3.5rem 3rem;
       border: 1px solid var(--border);
-      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08), 0 4px 12px rgba(108, 92, 231, 0.06);
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3), 0 4px 12px rgba(129, 140, 248, 0.05);
     }
 
     /* ===== DIVIDER ===== */
@@ -577,8 +588,8 @@
 
     .hobby-card:hover {
       transform: translateY(-6px);
-      border-color: var(--border-hover);
-      box-shadow: 0 24px 48px rgba(108, 92, 231, 0.12), 0 8px 24px rgba(0, 0, 0, 0.08);
+      border-color: var(--accent);
+      box-shadow: 0 24px 48px rgba(0, 0, 0, 0.4), 0 8px 24px rgba(129, 140, 248, 0.1);
     }
 
     .hobby-card:hover::before {
@@ -661,7 +672,8 @@
     .form-group input:focus,
     .form-group textarea:focus {
       border-color: var(--accent);
-      box-shadow: 0 0 0 3px rgba(108, 92, 231, 0.1);
+      background: rgba(129, 140, 248, 0.05);
+      box-shadow: 0 0 0 3px rgba(129, 140, 248, 0.2);
     }
 
     .form-group input::placeholder,
