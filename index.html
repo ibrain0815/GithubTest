@@ -1222,8 +1222,9 @@
         <form id="contactForm" class="contact-form">
           <div class="form-group">
             <label for="receiverEmail">수신 이메일 (고정)</label>
-            <input type="text" id="receiverEmail" value="admin@metantec.com" disabled
-              style="background: var(--bg-surface); opacity: 0.7; cursor: not-allowed;">
+            <input type="email" id="receiverEmail" value="admin@metantec.com" readonly
+              style="background: var(--bg-surface); color: var(--text-secondary); cursor: not-allowed; border-color: var(--border); font-weight: 500;"
+              onfocus="this.blur()">
           </div>
           <div class="form-row">
             <div class="form-group">
@@ -1387,6 +1388,8 @@
       formError.classList.remove('show');
       contactForm.style.display = 'block';
       contactForm.reset();
+      // Ensure fixed email remains
+      document.getElementById('receiverEmail').value = 'admin@metantec.com';
     }
 
     btnReset.addEventListener('click', resetForm);
