@@ -56,4 +56,4 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 - 모든 스타일과 스크립트는 `index.html` 내 인라인으로 포함
 - 외부 의존성은 Google Fonts CDN만 사용
-- 이메일 주소: `admin@metantec.ocom`
+- 이메일 주소: `admin@metantec.com`

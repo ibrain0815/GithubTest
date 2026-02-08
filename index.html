@@ -804,7 +804,9 @@
     }
 
     @keyframes spin {
-      to { transform: rotate(360deg); }
+      to {
+        transform: rotate(360deg);
+      }
     }
 
     /* ===== FOOTER ===== */
@@ -1236,6 +1238,10 @@
             <label for="message">내용</label>
             <textarea id="message" name="message" placeholder="문의 내용을 작성해주세요" required></textarea>
           </div>
+          <!-- Spam Protection & Settings -->
+          <input type="text" name="_honey" style="display:none">
+          <input type="hidden" name="_captcha" value="false">
+          <input type="hidden" name="_template" value="table">
           <button type="submit" class="contact-btn" id="submitBtn">
             <svg viewBox="0 0 24 24">
               <rect x="2" y="4" width="20" height="16" rx="2" />
@@ -1251,8 +1257,11 @@
             </svg>
           </div>
           <h3>메일이 전송되었습니다</h3>
-          <p><strong>admin@metantec.com</strong>으로<br>메일이 성공적으로 전송되었습니다.</p>
-          <p style="font-size: 0.85rem; color: var(--text-muted);">빠른 시일 내에 답변 드리겠습니다.</p>
+          <p>내용이 성공적으로 전달되었습니다.</p>
+          <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1rem;">
+            * 처음 전송하시는 경우, <strong>admin@metantec.com</strong>으로 발송된<br>
+            FormSubmit의 <strong>Activation 메일</strong>을 확인하고 승인 버튼을 눌러주셔야 합니다.
+          </p>
           <button class="btn-reset" id="btnReset">새 메일 작성하기</button>
         </div>
         <div id="formError" class="form-success">
@@ -1329,27 +1338,40 @@
 
     contactForm.addEventListener('submit', async (e) => {
       e.preventDefault();
+
+      // Basic validation
+      if (!contactForm.checkValidity()) return;
+
       submitBtn.classList.add('loading');
 
       const formData = new FormData(contactForm);
+      const data = Object.fromEntries(formData);
 
       try {
-        const res = await fetch('https://formsubmit.co/ajax/admin@metantec.com', {
+        const response = await fetch('https://formsubmit.co/ajax/admin@metantec.com', {
           method: 'POST',
-          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-          body: JSON.stringify(Object.fromEntries(formData))
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          },
+          body: JSON.stringify(data)
         });
 
-        if (res.ok) {
+        const result = await response.json();
+
+        if (response.ok && result.success === "true") {
           contactForm.style.display = 'none';
           formSuccess.classList.add('show');
+          console.log('Success:', result);
         } else {
-          contactForm.style.display = 'none';
-          formError.classList.add('show');
+          throw new Error(result.message || '전송 실패');
         }
       } catch (err) {
+        console.error('Error:', err);
         contactForm.style.display = 'none';
         formError.classList.add('show');
+        const errorText = formError.querySelector('p');
+        if (errorText) errorText.innerHTML = `오류가 발생했습니다: ${err.message}<br>잠시 후 다시 시도해주세요.`;
       } finally {
         submitBtn.classList.remove('loading');
       }
